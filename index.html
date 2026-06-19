@@ -2,273 +2,442 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>File Replacer 2000 - Modern Distribution</title>
+    <title>File Replacer 2000 - Техническая документация</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
     <style type="text/css">
         body {
-            background-color: #D4D0C8;
+            background-color: #7BA2E7; /* Фирменный синий XP */
             font-family: "Tahoma", "Verdana", Arial, sans-serif;
-            font-size: 10pt;
-            margin: 10px;
+            margin: 0;
+            padding: 0;
             color: #000000;
         }
-        table.wrapper {
-            background-color: #FFFFFF;
-            border: 2px solid #808080;
-            width: 850px;
+
+        /* Шапка в стиле MSN/XP */
+        .top-banner {
+            background: #004EBD;
+            background: linear-gradient(to bottom, #0058E6 0%, #003FB3 100%);
+            border-bottom: 2px solid #FFFFFF;
+            padding: 20px;
+            color: #FFFFFF;
         }
-        .win-header {
-            background-color: #000080;
+        .top-banner h1 { margin: 0; font-size: 22pt; letter-spacing: -1px; }
+        .top-banner p { margin: 5px 0 0 0; font-size: 10pt; color: #D6E5FF; }
+        .dotnet-badge {
+            background: #fdf8de;
+            color: #0067cd;
+            padding: 4px 6px;
+            font-size: 11pt;
+            border: 1px solid #36acff;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        /* Основной контейнер */
+        .container {
+            width: 950px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            border: 1px solid #002D96;
+            display: table;
+        }
+
+        /* Боковая панель */
+        .left-nav {
+            display: table-cell;
+            width: 240px;
+            background-color: transparent;
+            border-right: 0;
+            vertical-align: top;
+            padding: 20px;
+        }
+        .nav-group {
+            background: #FFFFFF;
+            border: 1px solid #7FAAFF;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .nav-header {
+            background: #2151C5;
             color: #FFFFFF;
             padding: 5px 10px;
             font-weight: bold;
-            font-size: 12pt;
-        }
-        .sidebar {
-            width: 220px;
-            vertical-align: top;
-            background-color: #F0F0F0;
-            border-right: 1px solid #808080;
-            padding: 15px;
-        }
-        .main-content {
-            vertical-align: top;
-            padding: 20px 30px;
-        }
-        .help-block {
-            border: 1px solid #C0C0C0;
-            padding: 15px;
-            margin-bottom: 25px;
-        }
-        .help-header {
-            font-weight: bold;
-            font-size: 11pt;
-            margin-bottom: 10px;
-            color: #000000;
-            border-bottom: 1px solid #D4D0C8;
-            padding-bottom: 5px;
-        }
-        h1 { font-size: 16pt; color: #000080; margin: 0 0 15px 0; }
-        
-        .download-table {
-            width: 100%;
-            background-color: #F5F5F5;
-            border: 1px solid #808080;
-            margin-top: 10px;
-        }
-        .btn {
-            background-color: #D4D0C8;
-            border: 2px outset #FFFFFF;
-            padding: 4px 10px;
-            text-decoration: none;
-            color: #000000;
             font-size: 9pt;
-            display: inline-block;
         }
-        .btn:active { border: 2px inset #FFFFFF; }
-        
-        .screenshot {
-            margin: 10px 0;
-            width: 100%;
+        .nav-links a {
+            display: block;
+            padding: 5px 10px;
+            color: #002D96;
+            text-decoration: none;
+            font-size: 8pt;
+            border-bottom: 1px solid #D6DFF7;
         }
-        .ico-small {
-            width: 16px;
-            height: 16px;
-            vertical-align: middle;
-        }
-        .system-note {
-            background-color: #FFFFE1;
-            border: 1px solid #000000;
-            padding: 8px;
-            margin-bottom: 15px;
-        }
-        .hash-info {
-            font-size: 7pt;
-            color: #555555;
-            text-align: left;
-            margin-top: 10px;
-            font-family: "Courier New", monospace;
-            word-break: break-all;
+        .nav-links a:hover { background-color: #E7EFFF; text-decoration: underline; }
+
+        /* Контент */
+        .content {
+            display: table-cell;
+            padding: 30px;
+            vertical-align: top;
         }
 
-        /* Уведомление для старых систем (XP/7/8) */
-        #legacy-os-alert {
-            display: none;
-            background-color: #800000;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 12px;
+        h2 { color: #003399; border-bottom: 2px solid #EFEFEF; padding-bottom: 5px; font-size: 16pt; }
+        h3 { color: #003399; font-size: 12pt; margin-top: 25px; }
+        
+        .text-block { font-size: 10pt; line-height: 1.5; margin-bottom: 20px; }
+        .screenshot { display: block; margin: 20px 0; border: 0; }
+        
+        /* Кнопки загрузки */
+        .download-box {
+            background-color: #F1F1F1;
+            border: 1px solid #ACA899;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .dl-layout { width: 100%; }
+        .dl-item { vertical-align: top; padding: 10px; text-align: center; border-right: 1px solid #D4D0C8; }
+        .dl-item-last { border-right: 0; }
+        
+        .btn-big {
+            background: #EFEFEF;
+            border: 2px outset #FFFFFF;
+            padding: 10px;
+            display: block;
+            color: #000000;
+            text-decoration: none;
             font-weight: bold;
-            border-bottom: 2px solid #808080;
-            margin-bottom: 15px;
+            font-size: 9pt;
+            margin-bottom: 10px;
         }
-        #legacy-os-alert a {
-            color: #FFFF00;
-            text-decoration: underline;
-        }
+        .btn-big:active { border: 2px inset #FFFFFF; }
+        
+        .hash { font-family: "Courier New", monospace; font-size: 8pt; color: #666666; word-break: break-all; margin-top: 5px; }
+
+        /* Словарь иконок */
+        .icon-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .icon-table td { border: 1px solid #D6DFF7; padding: 5px; font-size: 9pt; }
+        .icon-table img { vertical-align: middle; margin-right: 10px; }
+
     </style>
 </head>
 <body>
 
-<center>
-    <!-- Блок уведомления: показывается только если Windows ниже 10 -->
-    <div id="legacy-os-alert">
-        ВНИМАНИЕ: Вы используете устаревшую версию ОС. 
-        Пожалуйста, перейдите на нашу классическую версию сайта: 
-        <a href="https://file-replacer-2000.rf.gd/">file-replacer-2000.rf.gd</a>
+<div class="top-banner">
+    <div style="width: 950px; margin: 0 auto;">
+        <img src="icon.png" align="left" style="margin-right: 20px;">
+        <h1>File Replacer 2000<span class="dotnet-badge">С НОВЫМ NET 4.0!</span></h1>
+        <p>Центр поддержки и документации пользователей OrangeSoft</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Сайдбар -->
+    <div class="left-nav">
+        <div class="nav-group">
+            <div class="nav-header">Основные разделы</div>
+            <div class="nav-links">
+                <a href="#sec1">1. О программе</a>
+                <a href="#sec2">2. Интерфейс (Как открывать)</a>
+                <a href="#sec3">3. Файлы и Папки</a>
+                <a href="#sec4">4. Режим: Перезапись</a>
+                <a href="#sec5">5. Режим: Редактор</a>
+                <a href="#sec6">6. Режим: Бинарный код (Hex)</a>
+                <a href="#sec7">7. Режим: Аудиоредактор</a>
+                <a href="#sec8">8. Резервные копии (.old)</a>
+                <a href="#sec9">9. Метаданные и Права</a>
+                <a href="#sec10">10. Под капотом</a>
+                <a href="#sec11">11. CLI (Командная строка)</a>
+                <a href="#sec12">12. История приложения</a>
+                <a href="#sec13">13. Настройки</a>
+                <a href="#sec14">14. Словарь иконок</a>
+            </div>
+        </div>
+        <div align="center">
+            <img src="icon.png"><br>
+            <span style="font-size: 8pt; color: #002D96;">Версия v0.6 (2026)</span>
+        </div>
     </div>
 
-    <table class="wrapper" cellpadding="0" cellspacing="0">
-        <tr>
-            <td colspan="2" class="win-header">
-                <img src="icon.png" width="16" height="16" align="absmiddle"> Справочная система - File Replacer 2000
-            </td>
-        </tr>
-        <tr>
-            <td class="sidebar">
-                <b>Содержание:</b><br><br>
-                1. <a href="#sec1">О программе</a><br>
-                2. <a href="#sec2">Интерфейс</a><br>
-                3. <a href="#sec3">Файлы и Папки</a><br>
-                4. <a href="#sec4">Режим: Перезапись</a><br>
-                5. <a href="#sec5">Режим: Редактор</a><br>
-                6. <a href="#sec6">Метаданные и Права</a><br>
-                7. <a href="#sec7">Резервные копии</a><br>
-                <br>
-                <hr noshade size="1">
-                <br>
-                <div align="center">
-                    <a href="#download" class="btn">ПЕРЕЙТИ К ЗАГРУЗКЕ</a>
-                </div>
-            </td>
-            <td class="main-content">
-                <h1>File Replacer 2000</h1>
+    <!-- Основной контент -->
+    <div class="content">
+        
+        <a name="sec1"></a>
+        <h2>1. О ПРОГРАММЕ</h2>
+        <div class="text-block">
+            FILE REPLACER 2000<br><br>
+            Программное обеспечение предназначено для управления файлами проекта, редактирования исходного кода, проверки контрольных сумм и атрибутов доступа.<br><br>
+            Разработано специально для быстрой и надежной работы на платформе Windows XP и выше.<br>
+            Версия сборки: 0.6 (2026)<br><br>
+            Официальный сайт: <a href="http://file-replacer-2000.rf.gd/" id="dynamic-link">http://file-replacer-2000.rf.gd/</a>
+        </div>
 
-                <!-- Section 1 -->
-                <a name="sec1"></a>
-                <div class="help-block">
-                    <div class="help-header">1. О ПРОГРАММЕ</div>
-                    Программное обеспечение предназначено для управления файлами проекта, редактирования исходного кода, проверки контрольных сумм и атрибутов доступа.<br><br>
-                    Разработано специально для быстрой и надежной работы на платформе <b>Windows XP SP3 и выше</b>.<br>
-                    Версия сборки: 0.5 (2010-2026) Теперь <b>с новым .NET 4.0!</b><br>
-                    Прошлые версии устарели. Если у вас осталась копия программы 0.4 и ниже, то удалите и установите последнию вместе <b>с .NET 4.0.</b>
-                </div>
+        <a name="sec2"></a>
+        <h2>2. ИНТЕРФЕЙС (КАК ОТКРЫВАТЬ)</h2>
+        <div class="text-block">
+            Есть 3 способа загрузить файлы в программу:<br><br>
+            1. <b>Адресная строка:</b> Просто вставьте путь к папке или файлу в текстовое поле 'Адрес' и нажмите Enter.<br>
+            2. <b>Панель инструментов:</b> Нажмите кнопку 'Проект' (для папки) или 'Файл' на верхней панели.<br>
+            3. <b>Drag & Drop:</b> Просто перетащите любую папку или файл из Windows прямо в окно программы.
+        </div>
 
-                <!-- Section 2 -->
-                <a name="sec2"></a>
-                <div class="help-block">
-                    <div class="help-header">2. ИНТЕРФЕЙС</div>
-                    <b>ПРОВОДНИК</b><br>
-                    Иерархическое дерево слева отображает структуру каталогов и файлов. При выборе объекта программа автоматически подготавливает его к работе согласно активному режиму.<br><br>
-                    <b>АДРЕСНАЯ СТРОКА</b><br>
-                    Поле 'Адрес' предназначено для ввода абсолютного пути к директории или файлу. После ввода пути нажмите клавишу Enter для осуществления перехода.
-                </div>
+        <a name="sec3"></a>
+        <h2>3. ФАЙЛЫ И ПАПКИ</h2>
+        <div class="text-block">
+            ДОСТУПНЫЕ ОПЕРАЦИИ:<br>
+            Чтобы открыть меню действий, кликните правой кнопкой мыши (ПКМ) по любому файлу или папке в дереве 'Проводник'.<br><br>
+            • <b>Создать новую папку</b> — создает директорию внутри выбранной.<br>
+            • <b>Создать новый файл</b> — инициализация пустого файла.<br>
+            • <b>Переименовать</b> — системное изменение имени.<br>
+            • <b>Удалить</b> — классическое удаление.<br>
+            • <b>Уничтожить без возможности восстановления</b> — программа забивает файл нулями (Secure Erase), после чего его невозможно восстановить программами-рекавери.<br>
+            • <b>Обновить дерево</b> — принудительное перечитывание диска.<br>
+            • <b>Узнать процесс / Разблокировать</b> — находит, кто занял файл.<br>
+            • <b>Метаданные</b> — открытие свойств файла.
+            <img src="Screen_files_and_folders.png" class="screenshot">
+        </div>
 
-                <!-- Section 3 -->
-                <a name="sec3"></a>
-                <div class="help-block">
-                    <div class="help-header">3. ФАЙЛЫ И ПАПКИ</div>
-                    ДОСТУПНЫЕ ОПЕРАЦИИ (Вызываются контекстным меню по правой кнопке мыши или через панель инструментов):<br><br>
-                    • <b>Создать файл</b> — инициализация нового пустого файла.<br>
-                    • <b>Создать папку</b> — инициализация новой директории.<br>
-                    • <b>Переименовать</b> — изменение системного имени объекта.<br>
-                    • <b>Удалить</b> — физическое удаление объекта с накопителя.<br>
-                    • <b>Обновить</b> — принудительное перечитывание состояния файловой системы.
-                    <img src="Screen_files_and_folders.png" class="screenshot">
-                </div>
+        <a name="sec4"></a>
+        <h2>4. РЕЖИМ: ПЕРЕЗАПИСЬ</h2>
+        <div class="text-block">
+            РЕЖИМ ПЕРЕЗАПИСИ (Установлен по умолчанию)<br>
+            Данный режим предназначен для полной замены содержимого целевого файла.<br><br>
+            Как использовать:<br>
+            1. Выберите файл в обозревателе слева.<br>
+            2. Внесите новый текст в большое поле справа.<br>
+            3. Если файл бинарный (видео, фото), перетащите другой файл в зону 'Перетащите любой файл сюда' или нажмите кнопку 'Выбрать файл на ПК'.<br>
+            4. Нажмите 'Заменить файл' внизу.
+            <img src="screen_editor.png" class="screenshot">
+        </div>
 
-                <!-- Section 4 -->
-                <a name="sec4"></a>
-                <div class="help-block">
-                    <div class="help-header">4. РЕЖИМ ПЕРЕЗАПИСИ</div>
-                    Данный режим предназначен для полной замены содержимого целевого файла.<br><br>
-                    <b>Алгоритм работы:</b><br>
-                    1. Выберите целевой файл в обозревателе.<br>
-                    2. Внесите новый текст в текстовое поле справа.<br>
-                    3. Нажмите 'Заменить текст'. Текущее содержимое файла будет безвозвратно удалено и заменено введенными данными.
-                    <img src="screen_editor.png" class="screenshot">
-                </div>
+        <a name="sec5"></a>
+        <h2>5. РЕЖИМ: РЕДАКТОР</h2>
+        <div class="text-block">
+            РЕЖИМ РЕДАКТОРА<br>
+            Переключение режима осуществляется кнопкой на верхней панели.<br><br>
+            Горячие клавиши в редакторе текста:<br>
+            • Ctrl+C / Ctrl+V / Ctrl+X — Копировать/Вставить/Вырезать<br>
+            • Ctrl+F — Открыть панель поиска<br>
+            • Ctrl+H — Открыть панель поиска и замены<br>
+            • Ctrl+S — Быстрое сохранение файла<br><br>
+            Подсветка синтаксиса:<br>
+            Поддерживается цветовое выделение для кода JSON, JS, C#, CSS, BAT, VBScript, INI, XML/XAML, SQL и PHP.<br><br>
+            Встроенные модули:<br>
+            При открытии изображений (png, jpg) автоматически активируется встроенный Paint.<br>
+            При открытии звука (wav) активируется Аудиоредактор.
+            <img src="screen_paint.png" class="screenshot">
+        </div>
 
-                <!-- Section 5 -->
-                <a name="sec5"></a>
-                <div class="help-block">
-                    <div class="help-header">5. РЕЖИМ РЕДАКТОРА</div>
-                    Переключение режима осуществляется кнопкой на верхней панели. В данном режиме файл открывается для построчного редактирования.<br><br>
-                    Внимание: Видеофайлы запрещены для редактирования как текст, чтобы избежать зависаний. При открытии изображений автоматически активируется встроенный Paint для визуального редактирования.
-                    <img src="screen_paint.png" class="screenshot">
-                </div>
+        <a name="sec6"></a>
+        <h2>6. РЕЖИМ: БИНАРНЫЙ КОД (HEX)</h2>
+        <div class="text-block">
+            БИНАРНЫЙ ПРОСМОТР<br>
+            Кнопка "Открыть как бинарный код (Hex View)" преобразует любой файл в шестнадцатеричный вид. Это нужно для прямого просмотра дампа памяти (например, exe или dll файлов). В этом режиме файл доступен только для чтения. Для возврата к тексту нажмите кнопку "Вернуться к тексту".
+        </div>
 
-                <!-- Section 6 -->
-                <a name="sec6"></a>
-                <div class="help-block">
-                    <div class="help-header">6. МЕТАДАННЫЕ И ПРАВА</div>
-                    <b>ОКНО СВОЙСТВ (Контекстное меню -> Метаданные, Хэш и Права)</b><br>
-                    - <b>Временные атрибуты:</b> Изменение системной даты создания, модификации и последнего открытия файла.<br>
-                    - <b>Контрольные суммы:</b> Вычисление алгоритмов MD5 и SHA-256 для верификации целостности файла, а также функция сравнения с эталонным значением.<br>
-                    - <b>Списки контроля доступа (ACL):</b> Просмотр разрешений. Иконки обозначают тип субъекта:<br>
-                    <img src="1012.ico" class="ico-small"> Человек (Пользователь),<br>
-                    <img src="251.ico" class="ico-small"> Рука (Общий доступ),<br>
-                    <img src="864.ico" class="ico-small"> Земля (Сеть),<br>
-                    <img src="618.ico" class="ico-small"> Звезда (Администратор/Система).
-                    <img src="screen_metadata.png" class="screenshot">
-                </div>
+        <a name="sec7"></a>
+        <h2>7. РЕЖИМ: АУДИОРЕДАКТОР</h2>
+        <div class="text-block">
+            АУДИОРЕДАКТОР<br>
+            Открывается автоматически при выборе файлов формата аудио в Режиме Редактора.<br><br>
+            Позволяет:<br>
+            - Прослушивать любые аудио файлы, включая MP3 и WAV (Play / Stop)<br>
+            - Редактировать несжатые WAV (PCM) файлы: Наложение затухания (Fade Out), нарастания (Fade In) и конвертация (Моно <-> Стерео).<br>
+            - Удерживайте Левую Кнопку Мыши на звуковой волне WAV файла, чтобы выделить фрагмент, к которому применятся эффекты.
+            <img src="screen_audio.png" class="screenshot">
+        </div>
 
-                <!-- Section 7 -->
-                <a name="sec7"></a>
-                <div class="help-block">
-                    <div class="help-header">7. РЕЗЕРВНЫЕ КОПИИ</div>
-                    <b>РЕЗЕРВНОЕ КОПИРОВАНИЕ (.old)</b><br>
-                    При активации соответствующего параметра, перед записью изменений система создает дубликат оригинального файла в поддиректории old_ИмяФайла.<br><br>
-                    <b>ВОССТАНОВЛЕНИЕ</b><br>
-                    При выборе файла с расширением .old система отображает дату его создания и активирует кнопки для создания нового файла из копии, сравнения (Diff) и восстановления.
-                    <img src="Screen_backups.png" class="screenshot">
-                </div>
+        <a name="sec8"></a>
+        <h2>8. РЕЗЕРВНЫЕ КОПИИ (.OLD)</h2>
+        <div class="text-block">
+            РЕЗЕРВНОЕ КОПИРОВАНИЕ<br>
+            При установленной галочке внизу экрана, любое сохранение создает резервную копию (.old) в скрытой папке.<br><br>
+            Возможности при выборе .old файла в дереве:<br>
+            • Восстановить — нажмите, затем дважды кликните по файлу в дереве, который хотите спасти.<br>
+            • Сравнить — визуальное отображение разницы между копией и оригиналом (Diff).<br>
+            • Создать новый из копии — выгружает резервную копию в полноценный файл.<br><br>
+            В режиме Редактора файлы .old можно редактировать как обычный текст без блокировок.
+            <img src="Screen_backups.png" class="screenshot">
+        </div>
 
-                <a name="download"></a>
-                <div class="system-note">
-                    Для работы программы требуется наличие <b>.NET Framework 4.0</b>.
-                </div>
+        <a name="sec9"></a>
+        <h2>9. МЕТАДАННЫЕ И ПРАВА</h2>
+        <div class="text-block">
+            ОКНО МЕТАДАННЫХ (Контекстное меню -> Метаданные)<br>
+            Здесь вы можете изменить дату создания, изменения файла и узнать его кодировку.<br><br>
+            • Копирование хэшей: Рассчитайте хэш, затем кликните ЛКМ по тексту MD5 или SHA256 — он мгновенно скопируется в буфер обмена.<br>
+            • Замораживатель метаданных (Кнопка Заморозить или Шестерня): Блокирует файл от изменений на уровне системы.<br><br>
+            Цвета шестерни:<br>
+            - Голубая — обычный файл<br>
+            - Голубая со снегом — файл только что заморозили<br>
+            - Синяя со снегом — файл был заморожен еще до открытия окна<br>
+            - Синяя — файл только что разморозили.
+            <img src="screen_metadata.png" class="screenshot">
+        </div>
 
-                <table class="download-table" border="0" cellpadding="10" cellspacing="1">
-                    <tr>
-                        <td align="center" bgcolor="#FFFFFF" width="30%">
-                            <b>GitHub Release</b><br><br>
-                            <a href="https://github.com/oorraanngee/filereplacer2000/releases/download/0.5/FileReplacer2000_Setup.exe" class="btn">Скачать с GitHub</a>
-                        </td>
-                        <td align="center" bgcolor="#FFFFFF" width="40%">
-                            <b>Прямое зеркало (HTTP)</b><br><br>
-                            <a href="http://d5.tfdl.net/public/2026-06-17/c4a7126d-b785-4ab7-a89a-216be49c3e00/FileReplacer2000_Setup.exe" class="btn">Скачать установщик (.EXE)</a>
-                            <div class="hash-info">
-                                MD5: A05D1F94796041FCC9A37AC72515E756<br>
-                                SHA256: 4FBA56B0B6B8C550B6F75C6EB60FE35245769797495A56CBE4E5FB02EDF154E3
-                            </div>
-                        </td>
-                        <td align="center" bgcolor="#FFFFFF" width="30%">
-                            <b>Зависимость (.NET)</b><br><br>
-                            <a href="https://github.com/oorraanngee/filereplacer2000/releases/download/0.1/dotNetFx40_Full_x86_x64.exe" class="btn">dotNetFx40_Full_x86_x64.exe</a>
-                        </td>
-                    </tr>
-                </table>
+        <a name="sec10"></a>
+        <h2>10. ПОД КАПОТОМ (ТЕХНИЧЕСКИЕ ДЕТАЛИ)</h2>
+        <div class="text-block">
+            КАК РАБОТАЕТ ПРОГРАММА:<br><br>
+            • Файл настроек (config.ini): На Windows XP программа сохраняет его и в Program Files, и в AppData. Если они различаются, программа предложит синхронизацию. На Windows Vista+ программа пишет только в AppData, чтобы избежать системных блокировкок UAC.<br>
+            • Звуки: Если папка Sounds отсутствует, программа не вылетит, а просто продолжит работу без звука.<br>
+            • Ссылка в справке динамическая и зависит от версии Windows в вашем системном реестре.
+        </div>
 
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" bgcolor="#D4D0C8" style="padding: 8px; border-top: 1px solid #808080; font-size: 8pt;" align="center">
-                OrangeSoft &copy; 2001-2026. Разработано для современных систем Windows.
-            </td>
-        </tr>
-    </table>
-</center>
+        <a name="sec11"></a>
+        <h2>11. CLI (КОМАНДНАЯ СТРОКА)</h2>
+        <div class="text-block">
+            File Replacer 2000 поддерживает параметры командной строки (CLI) для автоматизации:<br><br>
+            Замена текста без интерфейса:<br>
+            <code>FileReplacer2000.exe --source "ПУТЬ" --replace "СТАРЫЙ ТЕКСТ" "НОВЫЙ ТЕКСТ"</code><br><br>
+            Программа также использует служебные флаги --freeze и --killpid для внутреннего повышения прав.
+        </div>
+
+        <a name="sec12"></a>
+        <h2>12. ИСТОРИЯ ПРИЛОЖЕНИЯ</h2>
+        <div class="text-block">
+            В 2001 году была создана программа File Replacer 2000 на основе .NET 1.0 beta 2:<br>
+            - Появился основной функционал открытия файлов и изменения их<br>
+            - Появился сайт file-replacer-2000.com<br><br>
+            В 2002 году File Replacer 2000 был обновлён до версии 0.1 написанной на полноценном .NET 1.0:<br>
+            - Появился функционал резервных копий справок и визуального оформления<br><br>
+            В 2005 году обновили до 0.3 и до .NET 2.0:<br>
+            - Был добавлен редактор и настройки.<br><br>
+            В 2006 году программа обновилась до 0.4 на .NET 3.0:<br>
+            - Была добавлена подсветка синтаксиса.<br><br>
+            В 2010 году программа обновилась до версии 0.5 на .NET 4.0:<br>
+            - Появилось меню метаданных.<br>
+            - Список подсветки синтаксиса стал больше<br>
+            - Появилась оптимизация для файлов с большим количеством символов<br>
+            - Появилась возможность заблокировать файл для редактирования<br>
+            - Появился встроенный редактор картинок<br>
+            - Появился функционал продвинутого редактирования файлов<br><br>
+            В 2013 году появился сайт http://file-replacer-2000.rf.gd/ и file-replacer-2000.com закрылся спустя месяц существования первого.<br><br>
+            В 2020 году появился сайт https://file-replacer-2000.vercel.app<br><br>
+            В 2026 году появилась эта версия (0.6) File replacer:<br>
+            - Добавлена функция уничтожения файлов без возможности восстановления (затирка нулями)<br>
+            - Появился глобальный Drag & Drop для открытия файлов<br>
+            - Добавлена поддержка параметров командной строки (CLI)<br>
+            - Появился «Замораживатель» метаданных для блокировки на уровне системы<br>
+            - Добавлено быстрое копирование хэшей SHA256 и MD5 по клику<br>
+            - Внедрена система разблокировки занятых файлов (Restart Manager)<br>
+            - Умная синхронизация INI-файла между Program Files и AppData<br>
+            - Встроен просмотщик бинарного Hex кода<br>
+            - Добавлен классический аудиоредактор (WAV)<br>
+            - Расширена поддержка подсветки синтаксиса для множества старых форматов (VBS, INI, SQL и др.)
+        </div>
+
+        <a name="sec13"></a>
+        <h2>13. НАСТРОЙКИ</h2>
+        <div class="text-block">
+            Раздел настроек позволяет тонко сконфигурировать работу File Replacer 2000:<br><br>
+            <b>ОПТИМИЗАЦИЯ ТЕКСТА:</b> Если файл превышает 10000 строк, программа может автоматически отключить перенос слов, активируя аппаратную виртуализацию. Это позволяет редактировать файлы логов весом до 150 МБ без зависаний.<br><br>
+            <b>ЗВУКИ:</b> Отключение всех системных звуковых эффектов формата .wav.<br><br>
+            <b>РЕЗЕРВНОЕ КОПИРОВАНИЕ:</b> Тонкая настройка создания файлов .old. Можно включить обязательное резервирование даже при изменении самих бэкапов.<br><br>
+            <b>ПОДСВЕТКА СИНТАКСИСА:</b> Полное управление языками, для которых будет работать цветовое кодирование (JSON, JS, C#, CSS, BAT, VBS, INI, XML, SQL, PHP).
+            <img src="screen_settings.png" class="screenshot">
+        </div>
+
+        <a name="sec14"></a>
+        <h2>14. СЛОВАРЬ ИКОНОК</h2>
+        <div class="text-block">
+            <table class="icon-table">
+                <tr><td><img src="23.ico"></td><td>Закрытая папка (иконка пустой папки)</td></tr>
+                <tr><td><img src="35.ico"></td><td>Открытая папка (иконка папки)</td></tr>
+                <tr><td><img src="106.ico"></td><td>Земля с кольцом (иконка файлов типа html)</td></tr>
+                <tr><td><img src="109.ico"></td><td>Земля как коврик для мыши (иконка для типа файлов css)</td></tr>
+                <tr><td><img src="251.ico"></td><td>Рука (иконка для «все» в метаданных раздел прав)</td></tr>
+                <tr><td><img src="274.ico"></td><td>Полная корзина (иконка удаления файла)</td></tr>
+                <tr><td><img src="334.ico"></td><td>Иконка ключа (иконка pem файлов)</td></tr>
+                <tr><td><img src="348.ico"></td><td>Папка с лупой (иконка открытия файла/проекта)</td></tr>
+                <tr><td><img src="368.ico"></td><td>Замок (иконка для помечания заблокированных файлов)</td></tr>
+                <tr><td><img src="494.ico"></td><td>Стол на котором бумажка по которой ведёт карандаш (иконка режима перезаписи)</td></tr>
+                <tr><td><img src="503.ico"></td><td>Блокнот с шестерёнкой (иконка для файлов типа bat, cs, т.д.)</td></tr>
+                <tr><td><img src="514.ico"></td><td>Блокнот (иконка для файлов типа txt)</td></tr>
+                <tr><td><img src="520.ico"></td><td>Бумага на которой нарисованы шестерни (иконка для файлов типа xaml)</td></tr>
+                <tr><td><img src="526.ico"></td><td>4 битная иконка окна в котором шестерёнка (иконка для exe файлов win32)</td></tr>
+                <tr><td><img src="549.ico"></td><td>Листок с письменной курсивной «а» (иконка для snlx и sln)</td></tr>
+                <tr><td><img src="618.ico"></td><td>Звезда (показ администратора/системы в правах)</td></tr>
+                <tr><td><img src="633.ico"></td><td>Земля в которую втыкается кабель (иконка для файлов типа crx)</td></tr>
+                <tr><td><img src="723.ico"></td><td>Иконка затирки файла (испаряющийся листок)</td></tr>
+                <tr><td><img src="743.ico"></td><td>Листок с кино плёнкой (иконка для видео mp4, и др.)</td></tr>
+                <tr><td><img src="749.ico"></td><td>Листок с нотой (иконка для аудио mp3, и др.)</td></tr>
+                <tr><td><img src="757.ico"></td><td>3 фотографии с пейзажем (иконка для изображений)</td></tr>
+                <tr><td><img src="864.ico"></td><td>Земля с зелёной стрелкой (общественный доступ по сети)</td></tr>
+                <tr><td><img src="892.ico"></td><td>Поле ввода и курсор (иконка переименования)</td></tr>
+                <tr><td><img src="901.ico"></td><td>Две земли (сравнить файл old с другим)</td></tr>
+                <tr><td><img src="904.ico"></td><td>Принтер (создать новый файл из .old)</td></tr>
+                <tr><td><img src="1012.ico"></td><td>Люди (иконка прав пользователя)</td></tr>
+                <tr><td><img src="1045.ico"></td><td>Большая шестерёнка (раздел настроек)</td></tr>
+                <tr><td><img src="1047.ico"></td><td>Маленькая шестерёнка (иконка окна настроек)</td></tr>
+                <tr><td><img src="1048.ico"></td><td>3D инфографика памяти (резервная копия проекта)</td></tr>
+                <tr><td><img src="1067.ico"></td><td>Листок с вопросительным знаком (неизвестный формат)</td></tr>
+                <tr><td><img src="1099.ico"></td><td>8 битная иконка окна с шестерёнкой (exe win64)</td></tr>
+                <tr><td><img src="1125.ico"></td><td>Карандаш ставит галочку (создание нового файла)</td></tr>
+                <tr><td><img src="1260.ico"></td><td>Дискета (иконка файлов типа .old)</td></tr>
+                <tr><td><img src="1289.ico"></td><td>Зелёная кнопка перезагрузки</td></tr>
+                <tr><td><img src="1384.ico"></td><td>Вопросительный знак (иконка справки)</td></tr>
+                <tr><td><img src="3134.ico"></td><td>Кнопка со снежинкой (Заморозить)</td></tr>
+                <tr><td><img src="8131.ico"></td><td>Лупа просвечивает замок (Кем занят файл)</td></tr>
+                <tr><td><img src="8132.ico"></td><td>Разбитая лупа (Насильное завершение процесса)</td></tr>
+                <tr><td><img src="9101.ico"></td><td>Голубая шестерёнка</td></tr>
+                <tr><td><img src="9102.ico"></td><td>Синея шестерёнка</td></tr>
+                <tr><td><img src="9103.ico"></td><td>Голубая замороженная шестерёнка (Заморожено только что)</td></tr>
+                <tr><td><img src="9104.ico"></td><td>Синея замороженная шестерёнка (Заморожено ранее)</td></tr>
+            </table>
+        </div>
+
+        <a name="download"></a>
+        <div class="download-box">
+            <h2 style="margin-top: 0;">Центр загрузки ПО</h2>
+            <table class="dl-layout" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="dl-item" width="33%">
+                        <img src="1125.ico" style="margin-bottom: 10px;"><br>
+                        <b>FR 2000 Setup</b><br>
+                        <span style="font-size: 8pt;">Локальный инсталлятор</span><br><br>
+                        <a href="File-Replacer-2000_Setup.exe" class="btn-big">СКАЧАТЬ (EXE)</a>
+                        <div class="hash">Статус: Временно недоступен</div>
+                    </td>
+                    <td class="dl-item" width="34%">
+                        <img src="106.ico" style="margin-bottom: 10px;"><br>
+                        <b>Внешнее зеркало</b><br>
+                        <span style="font-size: 8pt;">HTTP Репозиторий</span><br><br>
+                        <a href="https://d5.tfdl.net/public/2026-06-19/fce4b503-25e2-4f48-ba67-fc76fcc52e96/FileReplacer2000_Setup.exe" class="btn-big">СКАЧАТЬ С ЗЕРКАЛА</a>
+                        <div class="hash">MD5: 273AE9A6EEED1329FC21748E2A57B794</div>
+                    </td>
+                    <td class="dl-item dl-item-last" width="33%">
+                        <img src="503.ico" style="margin-bottom: 10px;"><br>
+                        <b>Системные файлы</b><br>
+                        <span style="font-size: 8pt;">Требуется для работы</span><br><br>
+                        <a href="https://github.com/oorraanngee/filereplacer2000/releases/download/0.1/dotNetFx40_Full_x86_x64.exe" class="btn-big">.NET FRAMEWORK 4.0</a>
+                        <div class="hash">Web Installer</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div align="center" style="margin-top: 40px; font-size: 8pt; color: #666666;">
+            OrangeSoft &copy; 2001-2026.<br>
+            Разработано для ОС семейства Windows (XP SP3 и выше).
+        </div>
+
+    </div>
+</div>
 
 <script type="text/javascript">
     (function() {
         var ua = window.navigator.userAgent;
-        var isWindows = ua.indexOf("Windows") !== -1;
-        // Windows NT 10.0 соответствует Windows 10 и 11
-        var isModern = ua.indexOf("Windows NT 10.0") !== -1;
+        var isModern = (ua.indexOf("Windows NT 10.0") !== -1 || ua.indexOf("Windows NT 11.0") !== -1);
         
-        // Если это Windows, но версия ниже 10 (XP, 7, 8)
-        if (isWindows && !isModern) {
-            document.getElementById('legacy-os-alert').style.display = 'block';
+        if (isModern) {
+            var dLink = document.getElementById('dynamic-link');
+            if (dLink) {
+                dLink.href = "https://file-replacer-2000.vercel.app";
+                dLink.innerHTML = "https://file-replacer-2000.vercel.app";
+            }
         }
     })();
 </script>
